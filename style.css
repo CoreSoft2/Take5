@@ -1,0 +1,109 @@
+body {
+	font-weight: 400;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #11a4c5;
+	margin: 0;
+	-webkit-app-region: no-drag;
+	text-align:center;
+}
+.message-area {
+	position:relative;
+	height: calc(100vh - 44px);
+}
+.block {
+	display:bock;
+	background-color: #11a4c5;
+	color: #fff;
+	padding: 1.25em;
+	position: absolute;
+	width: 75%;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+}
+.clock {
+	font-size: 1.75em;
+}
+.overlay {
+	background: rgba(0,0,0,.75);
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 5;
+	color: #fff;
+}
+.overlay-title {
+	border-bottom: 1px solid #fff;
+	font-weight: normal;
+	padding: 1em 0;
+	font-size: .785rem;
+	text-transform: upppercase; 
+	letter-spacing: .25em;
+	margin: 0 1em;
+}
+.overlay-content {
+	font-size: .687rem;
+}
+.menu {
+	width: 100%;
+}
+.clear:after {
+	content:" ";
+	display:block; 
+	clear:both;
+	visibility:hidden;
+	font-size: 0;
+	line-height: 0;
+}
+.icon {
+	display: block;
+	float:right;
+	width: 10%;
+	text-align: center;
+	cursor:pointer;
+}
+.icon.settings {
+	float:left;
+}
+.icon a {
+	color: rgba(0,0,0,.4);
+	padding: .10em;
+	display:block;
+}
+.icon .fa {
+	//font-size: 2em;
+}
+.icon a:hover .fa {
+	color: rgba(0,0,0,.7);
+}
+button {
+	border-radius: 5px;
+	border: 0;
+	background: goldenrod;
+	padding: 10px 20px;
+	box-shadow: 2px 2px 0 rgba(0,0,0,.3);
+	display:block;
+	color: white;
+	margin: 1em auto;
+	width: 75%;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+}
+button.hollow {
+	background: transparent;
+	border: 1px solid #fff;
+}
+button.hollow:hover {
+	background: rgba(255,255,255, 0.2);
+}
+button.alt {
+	background: #11a4c5;
+}
+.button-group button {
+	float:left;
+}
+.settings-menu .button-group {
+	float: right;
+}
