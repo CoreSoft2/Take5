@@ -10,9 +10,7 @@ app.controller('mainCtrl', ['$scope', '$interval', '$timeout',
 function($scope, $interval, $timeout) {
 	
 	//On open, move the window to the bottom right corner of the screen
-	var xPos = (window.screen.width) - window.outerWidth,
-		yPos = (window.screen.height) - window.outerHeight,
-		counter = 0,
+	var counter = 0,
 		settingsOpen = false,
 		messageArray = [
 			"Time for a walk, buddy",
@@ -22,8 +20,17 @@ function($scope, $interval, $timeout) {
 			"SQUIRREL!",
 			"You know what time it is... Hammertime!"
 		];
-			
-	win.moveTo(xPos, yPos);
+
+	//Open Dev Tools
+	$scope.openDevTools = function($event) {
+	    if (win.isDevToolsOpen()) {
+	      win.closeDevTools();
+	      this.innerText = "Open Developer Tools";
+	    } else {
+	      win.showDevTools();
+	      this.innerText = "Close Developer Tools";
+	    }
+	}
 	
 	//Minimize the window
 	$scope.minimizeIt = function($event) {
@@ -40,18 +47,25 @@ function($scope, $interval, $timeout) {
 	//Create functionality to open the settings
 	$scope.toggleSettings = function($event) {
 		$scope.settingsOpen = !$scope.settingsOpen;
-		if (state) {
-			win.resizeTo(400, 250);
-			win.moveTo(xpos, yPos);
-		} else {
-			win.resizeTo(400, 700);
-			win.moveTo(xPos, (yPos - 300));
-		}
 	}
 	
-	//Time to next break in milliseconds(intervals)
-	$scope.int = 500;
-	
+	//Settings
+	$scope.settings = {
+		"interval" : 5 //Minutes
+	}
+	//Calculate break intervals and convert to milliseconds
+	$scope.breakInterval = (($scope.settings.interval)*1000);
+
+	$scope.updateSettings = function(settings) {
+		$scope.breakInterval = (($scope.settings.interval)*1000);
+		console.log('settings.interval ' + $scope.settings.interval);
+		console.log('breakInterval ' + $scope.breakInterval);
+
+		//Run the clock on open
+		$scope.hammerTime($scope.breakInterval);
+		$scope.toggleSettings();
+	}
+
 	//Get the curret date and time, and move the clock along using $interval service with a promise
 	$scope.hammerTime = function(intervals) {
 		$scope.showMessage = false;
@@ -77,6 +91,6 @@ function($scope, $interval, $timeout) {
 	};
 	
 	//Run the clock on open
-	$scope.hammerTime($scope.int);
+	$scope.hammerTime($scope.breakInterval);
 	
 }]);

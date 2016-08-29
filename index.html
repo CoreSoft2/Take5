@@ -11,8 +11,54 @@
 </head>
 
 <body ng-controller="mainCtrl">
-	<div class="settings-menu overlay" ng-show="settingsOpen"></div>
-    <div class="menu"></div>
+	<div class="settings-menu overlay" ng-show="settingsOpen">
+     <div class="overlay-title">Settings</div>
+     <div class="overlay-content">
+     <form novalidate>
+         <div class="option-group">
+             <label>Minutes before next break</label>
+             <select ng-model="settings.interval">
+                 <option selected>1</option>
+                 <option>5</option>
+                 <option>10</option>
+                 <option>15</option>
+                 <option>20</option>
+                 <option>25</option>
+                 <option>30</option>
+                 <option>35</option>
+                 <option>40</option>
+                 <option>45</option>
+                 <option>60</option>
+             </select>
+         </div>
+         <div class="clear">
+             <div class="button-group">
+                 <button class="cancel hollow" ng-click="toggleSettings()">Cancel</button>
+                 <button class="save alt" ng-click="updateSettings(settings)">Save</button>
+             </div>
+         </div>
+       </form>
+     </div>   
+    </div>
+    <div class="menu clear">
+        <div class="class">
+            <div class="icon close">
+                <a ng-click="closeIt()">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+            <div class="icon settings">
+                <a ng-click="toggleSettings()">
+                    <i class="fa fa-cog"></i>
+                </a>
+            </div>
+            <div class="icon minimize">
+                <a ng-click="minimizeIt($event)">
+                    <i class="fa fa-minus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="message-area">
     	<div class="clocks block" ng-show="!showMessage">
         	<span class="text">{{currentTime | date: 'mediumTime'}}</span><br>
@@ -20,6 +66,7 @@
             <span class="clock">
             	{{nextBreak | date: 'mediumTime'}}
             </span>
+            <button ng-click="openDevTools()">Open Dev tools</button>
         </div>
         <div class="message block" ng-show="showMessage">
         	<button class="confirm" ng-click="hammerTime(int)">Resume work</button>

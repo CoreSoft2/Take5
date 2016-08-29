@@ -39,12 +39,14 @@ body {
 	font-weight: normal;
 	padding: 1em 0;
 	font-size: .785rem;
-	text-transform: upppercase; 
+	text-transform: uppercase; 
 	letter-spacing: .25em;
-	margin: 0 1em;
+	margin: 0 1em 1em;
 }
 .overlay-content {
 	font-size: .687rem;
+	padding: 0 1em;
+	text-align:left;
 }
 .menu {
 	width: 100%;
@@ -102,8 +104,12 @@ button.alt {
 	background: #11a4c5;
 }
 .button-group button {
-	float:left;
+	float:right;
+	display:inline-block;
+	margin-left: 1em;
+	width: auto;
 }
 .settings-menu .button-group {
 	float: right;
+	width: 100%;
 }

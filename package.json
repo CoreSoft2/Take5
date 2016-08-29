@@ -6,9 +6,10 @@
   "main": "index.html",
   "url": "localhost",
   "window": {
-	  "toolbar": false,
-	  "width": 400,
-	  "height": 250
+    "toolbar": false,
+    "width": 400,
+    "height": 250,
+    "position": "center"
   },
   
     "homepage": "https://github.com/larzilla/take5",
